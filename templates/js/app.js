@@ -5,7 +5,6 @@ var multer = require('multer')
 var constants = require('constants');
 var constant = require('./config/constants');
 
-
 var port = process.env.PORT || 8042;
 var passport = require('passport');
 var flash = require('connect-flash');
@@ -22,9 +21,10 @@ var now = new Date();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-
 /***************Mongodb configuratrion********************/
 var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+
 var configDB = require('./config/database.js');
 //configuration ===============================================================
 mongoose.connect(configDB.url); // connect to our database
